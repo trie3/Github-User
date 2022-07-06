@@ -1,10 +1,5 @@
 package com.suwarso.tri.githubuser.detail;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,11 +11,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
 import com.suwarso.tri.githubuser.R;
-import com.suwarso.tri.githubuser.dashboard.DashboardPresenter;
 import com.suwarso.tri.githubuser.utils.core.BaseActivity;
 import com.suwarso.tri.githubuser.utils.offline.GithubUser;
 import com.suwarso.tri.githubuser.utils.offline.GithubUserViewModel;

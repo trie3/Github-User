@@ -35,9 +35,4 @@ public class GithubUserRepository {
     LiveData<List<GithubUser>> search(String search) {
         return githubUserDao.searchUser(search);
     }
-
-//    List<GithubUser> search(String search){
-//
-//    }
-
 }

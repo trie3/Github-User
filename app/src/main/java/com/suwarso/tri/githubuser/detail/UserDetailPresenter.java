@@ -1,13 +1,8 @@
 package com.suwarso.tri.githubuser.detail;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.widget.Toast;
-
 import com.suwarso.tri.githubuser.utils.api.ApiBuilder;
 import com.suwarso.tri.githubuser.utils.api.ApiService;
 import com.suwarso.tri.githubuser.utils.core.BasePresenter;
-import com.suwarso.tri.githubuser.utils.offline.GithubUser;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -33,17 +28,5 @@ public class UserDetailPresenter extends BasePresenter<UserDetailView> {
                 })
         );
     }
-
-//    public void saveData(GithubUser githubUser){
-//        view.showProgress();
-//        String note = etNotes.getText().toString();
-//        githubUser.setNote(note);
-//        viewModel.insert(githubUser);
-////            Intent intent = new Intent();
-//        Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
-//        setResult(Activity.RESULT_OK, new Intent());
-//        finish();
-//    }
-
 
 }

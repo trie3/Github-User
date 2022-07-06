@@ -42,18 +42,6 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.Gi
         this.listUser = list;
         notifyDataSetChanged();
     }
-//    public GithubUserAdapter(@NonNull DiffUtil.ItemCallback<GithubUser> diffCallback, Context context) {
-//        super(diffCallback);
-//        this.context = context;
-//    }
-
-
-
-
-//
-//    public GithubUserAdapter(@NonNull DiffUtil.ItemCallback<GithubUser> diffCallback) {
-//        super(diffCallback);
-//    }
 
     public GithubUserAdapter(Context context, List<GithubUser> listUser) {
         this.context = context;
@@ -69,11 +57,11 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.Gi
 
     @Override
     public void onBindViewHolder(GithubUserViewHolder holder, int position) {
-//        if((position+1) % 4 == 0){
-//            holder.bindDataInvert(listUser.get(position));
-//        }else{
-//        }
-        holder.bindData(listUser.get(position), position + 1);
+        if((position+1) % 4 == 0){
+            holder.bindDataInvert(listUser.get(position));
+        }else{
+            holder.bindData(listUser.get(position));
+        }
     }
 
     @Override
@@ -95,36 +83,47 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.Gi
             itemView.setOnClickListener(mOnItemClickListener);
         }
 
-        void bindData(GithubUser model, int position){
+        void bindData(GithubUser model){
             if(model.isSeen()){
                 background.setBackgroundColor(context.getResources().getColor(R.color.window_background_seen));
             }else{
                 background.setBackgroundColor(context.getResources().getColor(R.color.window_background));
             }
-            if(position % 4 == 0){
-                Glide.with(context)
-                        .asBitmap()
-                        .load(model.getAvatarUrl())
-                        .error(R.mipmap.ic_launcher)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(new CustomTarget<Bitmap>() {
-                            @Override
-                            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                                imageProfile.setImageBitmap(invertImage(resource));
-                            }
-
-                            @Override
-                            public void onLoadCleared(@Nullable Drawable placeholder) {
-
-                            }
-                        });
-            }else {
-                Glide.with(context)
-                        .load(model.getAvatarUrl())
-                        .error(R.mipmap.ic_launcher)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(imageProfile);
+            Glide.with(context)
+                    .load(model.getAvatarUrl())
+                    .error(R.mipmap.ic_launcher)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imageProfile);
+            tvNama.setText(model.getLogin());
+            if(model.getNote().isEmpty() || model.getNote().equals("")){
+                imgNote.setVisibility(View.GONE);
+            }else{
+                imgNote.setVisibility(View.VISIBLE);
             }
+        }
+
+        void bindDataInvert(GithubUser model){
+            if(model.isSeen()){
+                background.setBackgroundColor(context.getResources().getColor(R.color.window_background_seen));
+            }else{
+                background.setBackgroundColor(context.getResources().getColor(R.color.window_background));
+            }
+            Glide.with(context)
+                    .asBitmap()
+                    .load(model.getAvatarUrl())
+                    .error(R.mipmap.ic_launcher)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(new CustomTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                            imageProfile.setImageBitmap(invertImage(resource));
+                        }
+
+                        @Override
+                        public void onLoadCleared(@Nullable Drawable placeholder) {
+
+                        }
+                    });
             tvNama.setText(model.getLogin());
             if(model.getNote().isEmpty() || model.getNote().equals("")){
                 imgNote.setVisibility(View.GONE);

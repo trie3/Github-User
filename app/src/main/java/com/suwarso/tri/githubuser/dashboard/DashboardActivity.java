@@ -7,18 +7,15 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -58,17 +55,10 @@ public class DashboardActivity extends BaseActivity implements DashboardView,
     @BindView(R.id.profile_switchtheme) Switch switchTheme;
     DashboardPresenter presenter;
     int since = 0;
-    //    List<GithubUser> postDataList = new ArrayList<>();
-//    UserViewModel postViewModel;
-//    ListUserAdapter listUserAdapter;
-//    //    List<ListUserResponse> listUser;
-//    List<GithubUser> users = new ArrayList<>();
     ConnectivityReceiver connectivityReceiver = new ConnectivityReceiver();
     boolean isConnected;
     boolean tryLoadUrl = false;
     boolean search = false;
-
-//    UserAdapter adapter;
     List<GithubUser> listUser = new ArrayList<>();
     GithubUserAdapter adapter;
     GithubUserViewModel viewModel;

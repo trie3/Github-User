@@ -1,13 +1,7 @@
 package com.suwarso.tri.githubuser.utils.core;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.activity.result.ActivityResult;
 import androidx.annotation.LayoutRes;
@@ -43,11 +37,6 @@ public class BaseActivity extends AppCompatActivity {
         if (mUnBinder != null) {
             mUnBinder.unbind();
         }
-    }
-
-    public int dpToPx(int dp) {
-        Resources r = getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
 }
